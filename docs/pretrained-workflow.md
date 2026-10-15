@@ -1,5 +1,7 @@
 # Pretrained-model workflow
 
+[Project overview](../README.md) · [Research design](research-design.md) · [Recorded experiment](experiments.md)
+
 Run commands from the repository root after installing `.[hf,plots,test]`. Configurations use relative paths. Resolve each model's `revision: main` to an immutable commit before generating candidates so all methods can share the same cache.
 
 ## Prepare data
@@ -34,7 +36,7 @@ python scripts/generate_splits.py --split train
 python scripts/generate_splits.py --split validation
 ```
 
-The training generators are configured in `generate_qwen.yaml` and `generate_qwen_general.yaml`. Both belong to the Qwen family. The cache records model revision, generation parameters, question and configuration hashes, generated tokens, truncation and answer-parsing status. A changed configuration cannot silently append to the old cache.
+The training generators are configured in [`generate_qwen.yaml`](../configs/generate_qwen.yaml) and [`generate_qwen_general.yaml`](../configs/generate_qwen_general.yaml). Both belong to the Qwen family. The cache records model revision, generation parameters, question and configuration hashes, generated tokens, truncation and answer-parsing status. A changed configuration cannot silently append to the old cache.
 
 ## Train and validate
 
@@ -43,7 +45,7 @@ python scripts/run_baselines.py --stage train --seed 2026
 python scripts/run_baselines.py --stage validation --seed 2026
 ```
 
-`hf_1_5b.yaml` specifies a Qwen2.5-Math-1.5B scorer with LoRA rank 8, context length 2048 and one-prefix microbatches. Set `iterations` to a small number for an initial capacity run on the target GPU. The reports record tokens, elapsed time and CUDA peak memory. Hardware requirements depend on the model revision, software stack and sequence lengths.
+[`hf_1_5b.yaml`](../configs/hf_1_5b.yaml) specifies a Qwen2.5-Math-1.5B scorer with LoRA rank 8, context length 2048 and one-prefix microbatches. Set `iterations` to a small number for an initial capacity run on the target GPU. The reports record tokens, elapsed time and CUDA peak memory. Hardware requirements depend on the model revision, software stack and sequence lengths.
 
 Select temperature, learning rate, CE weight and DRO step size using validation data, then freeze the configuration. Repeat matched comparisons across seeds. Training-step equality does not imply equal compute: set objectives make additional forward passes, which are counted in the reports.
 
@@ -66,4 +68,4 @@ A pool with no correct candidate remains in coverage and accuracy reporting. Unk
 
 Set `resume` to a checkpoint directory to restore model, optimizer, random-number state and DRO weights. Data hashes and sampling/objective settings are checked before resuming. Evaluation checks the saved training question IDs even if the original data path is absent.
 
-`scripts/train_slurm.sh` is a single-GPU template. Set `PRMSHIFT_PYTHON`, `PRMSHIFT_REPO`, and the cluster's account/partition before submitting it. The script does not provision a server or submit itself.
+[`scripts/train_slurm.sh`](../scripts/train_slurm.sh) is a single-GPU template. Set `PRMSHIFT_PYTHON`, `PRMSHIFT_REPO`, and the cluster's account/partition before submitting it. The script does not provision a server or submit itself.

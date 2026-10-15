@@ -1,5 +1,7 @@
 # Research design: learning to choose among reasoning traces
 
+[Project overview](../README.md) · [Experiment settings and figures](experiments.md) · [Pretrained-model workflow](pretrained-workflow.md)
+
 The experiment separates three objects that are often compressed into one score: the correctness of a reasoning step, the availability of a correct candidate, and the verifier's decision once candidates are available. Each has a different supervision source and denominator. The implementation preserves those distinctions from data conversion through evaluation.
 
 ## The statistical target
@@ -73,12 +75,12 @@ $$
 =\frac{p_i}{\tau}(a_i-\ell_\tau).
 $$
 
-For a selected minimizing step $t_i^*$, the corresponding parameter gradient is
+For a selected minimizing step $t_i^{\ast}$, the corresponding parameter gradient is
 
 $$
 \nabla_\theta\ell_\tau=
 \sum_i\frac{p_i}{\tau}(a_i-\ell_\tau)
-\nabla_\theta h_\theta(x,r_{i,1:t_i^*}).
+\nabla_\theta h_\theta(x,r_{i,1:t_i^{\ast}}).
 $$
 
 This expression permits a graph-free pass to identify minima and compute coefficients, followed by one prefix graph at a time. No parameter update occurs between the two passes. Dropout is disabled, so recomputation uses the same scoring function. Tied minima select the first minimizing step; this chooses a valid subgradient rather than averaging across tied branches.
