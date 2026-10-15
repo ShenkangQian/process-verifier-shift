@@ -1,0 +1,32 @@
+# Pretrained process-scorer configuration for GPU experiments.
+# Run all four methods with identical inputs and tune only on validation.
+seed: 2026
+device: cuda
+cpu_threads: 4
+method: group_dro
+steps: data/prepared/steps_train.jsonl
+candidates: data/candidates/train_merged.jsonl
+output: results/hf_group_dro_seed2026
+iterations: 2000
+learning_rate: 0.0001
+weight_decay: 0.01
+step_batch_size: 1
+pool_sizes: [2, 4, 8]
+temperature: 1.0
+ce_weight: 1.0
+dro_eta: 0.05
+gradient_clip: 1.0
+model:
+  kind: hf
+  name: Qwen/Qwen2.5-Math-1.5B
+  revision: main  # Resolve to immutable model commit before a formal run.
+  dtype: bfloat16
+  lora: true
+  lora_rank: 8
+  lora_alpha: 16
+  lora_dropout: 0.0
+  target_modules: [q_proj, v_proj]
+  gradient_checkpointing: true
+  deterministic_scoring: true
+  max_length: 2048
+  prefix_microbatch: 1

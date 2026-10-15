@@ -1,0 +1,22 @@
+seed: 2026
+device: cpu
+cpu_threads: 2
+method: group_dro
+steps: data/synthetic/steps_train.jsonl
+candidates: data/synthetic/candidates_train.jsonl
+output: results/tiny_group_dro
+iterations: 30
+learning_rate: 0.003
+step_batch_size: 8
+pool_sizes: [2, 4]
+temperature: 1.0
+ce_weight: 1.0
+dro_eta: 0.2
+model:
+  kind: tiny
+  width: 32
+  heads: 4
+  layers: 1
+  max_length: 256
+  prefix_microbatch: 4
+  deterministic_scoring: true

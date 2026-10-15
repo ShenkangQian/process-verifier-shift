@@ -1,0 +1,15 @@
+# Copy per split / generator; never merge train and test caches.
+model: Qwen/Qwen2.5-Math-1.5B-Instruct
+revision: main
+generator: qwen_math_1_5b
+questions: data/prepared/questions_train.jsonl
+output: data/candidates/qwen_train.jsonl
+device: cuda
+dtype: bfloat16
+seed: 2026
+candidates_per_question: 16
+temperature: 0.8
+top_p: 0.95
+max_prompt_tokens: 1024
+max_new_tokens: 1024
+chat_template: true

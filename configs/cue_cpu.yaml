@@ -1,0 +1,28 @@
+# Spurious-cue mechanism study on CPU. scripts/run_cue.py fills in data paths, seed, iterations and validate_every per seed;
+# learning rate, step batch, temperature, DRO step and model size come from this file.
+seed: 2026
+device: cpu
+cpu_threads: 4
+method: group_dro
+steps: data/synthetic_cue/seed2026/steps_train.jsonl
+candidates: data/synthetic_cue/seed2026/candidates_train.jsonl
+validation_steps: data/synthetic_cue/seed2026/steps_validation.jsonl
+validation_candidates: data/synthetic_cue/seed2026/candidates_validation.jsonl
+output: results/cue_comparison/seed2026/group_dro/checkpoint
+iterations: 2000
+validate_every: 20
+log_selection_diagnostics: true
+learning_rate: 0.003
+step_batch_size: 16
+pool_sizes: [2, 4, 8]
+temperature: 1.0
+ce_weight: 1.0
+dro_eta: 0.2
+model:
+  kind: tiny
+  width: 32
+  heads: 4
+  layers: 1
+  max_length: 256
+  prefix_microbatch: 4
+  deterministic_scoring: true

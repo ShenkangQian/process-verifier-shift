@@ -1,0 +1,16 @@
+# Held-out generator: test questions only, never training or validation.
+# A 7B generator increases memory/time; measure on the eventual GPU.
+model: deepseek-ai/deepseek-math-7b-instruct
+revision: main
+generator: deepseek_math_7b_heldout
+questions: data/evaluation/math500.jsonl
+output: data/candidates/deepseek_test.jsonl
+device: cuda
+dtype: bfloat16
+seed: 2026
+candidates_per_question: 16
+temperature: 0.8
+top_p: 0.95
+max_prompt_tokens: 1024
+max_new_tokens: 1024
+chat_template: true
