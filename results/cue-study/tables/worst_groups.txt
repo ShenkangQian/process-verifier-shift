@@ -1,0 +1,33 @@
+Worst group per method (pooled over seeds; midpoint of identification bounds; 'robust' = same under lower and upper bound)
+
+[by_group]
+run              conditional (cf)             unconditional (cov x cf)     error rate (1-acc)           reversal
+balanced_ce      gen_B::n=16 [0.681,0.710]    gen_B::n=16 [0.605,0.622]    gen_B::n=16 [0.728,0.734]    no
+ce               gen_B::n=16 [0.681,0.710]    gen_B::n=16 [0.605,0.622]    gen_B::n=16 [0.728,0.734]    no
+group_dro        gen_D_flipped::n=16 [0.799,0.819] gen_D_flipped::n=16 [0.728,0.740] gen_D_flipped::n=16 [0.825,0.829] no
+group_dro_tau0.1 gen_D_flipped::n=16 [0.767,0.793] gen_D_flipped::n=16 [0.675,0.690] gen_D_flipped::n=16 [0.805,0.810] no
+group_dro_tau0.3 gen_D_flipped::n=16 [0.818,0.839] gen_D_flipped::n=16 [0.720,0.730] gen_D_flipped::n=16 [0.850,0.850] no
+set_erm          gen_D_flipped::n=16 [0.780,0.796] gen_D_flipped::n=16 [0.711,0.719] gen_D_flipped::n=16 [0.808,0.808] no
+set_erm_tau0.1   gen_D_flipped::n=16 [0.790,0.816] gen_D_flipped::n=16 [0.695,0.710] gen_D_flipped::n=16 [0.825,0.830] no
+set_erm_tau0.3   gen_D_flipped::n=16 [0.807,0.828] gen_D_flipped::n=16 [0.710,0.720] gen_D_flipped::n=16 [0.840,0.840] no
+
+[by_generator]
+run              conditional (cf)             unconditional (cov x cf)     error rate (1-acc)           reversal
+balanced_ce      gen_B [0.545,0.575]          gen_C_heldout [0.393,0.403]  gen_B [0.696,0.700]          yes
+ce               gen_B [0.545,0.575]          gen_C_heldout [0.393,0.403]  gen_B [0.696,0.700]          yes
+group_dro        gen_D_flipped [0.668,0.682]  gen_D_flipped [0.546,0.554]  gen_D_flipped [0.732,0.738]  no
+group_dro_tau0.1 gen_D_flipped [0.609,0.635]  gen_D_flipped [0.480,0.495]  gen_D_flipped [0.699,0.708]  no
+group_dro_tau0.3 gen_D_flipped [0.664,0.686]  gen_D_flipped [0.524,0.535]  gen_D_flipped [0.744,0.746]  no
+set_erm          gen_D_flipped [0.642,0.652]  gen_D_flipped [0.525,0.530]  gen_D_flipped [0.712,0.713]  no
+set_erm_tau0.1   gen_D_flipped [0.664,0.686]  gen_D_flipped [0.524,0.535]  gen_D_flipped [0.742,0.748]  no
+set_erm_tau0.3   gen_D_flipped [0.653,0.671]  gen_D_flipped [0.515,0.524]  gen_D_flipped [0.735,0.735]  no
+
+Per-seed reversal (conditional worst != unconditional worst, by_group):
+  balanced_ce      seed2026: no, seed2027: no, seed2028: yes, seed2029: no, seed2030: no
+  ce               seed2026: no, seed2027: no, seed2028: yes, seed2029: no, seed2030: no
+  group_dro        seed2026: no, seed2027: no, seed2028: no, seed2029: no, seed2030: no
+  group_dro_tau0.1 seed2026: no
+  group_dro_tau0.3 seed2026: no
+  set_erm          seed2026: no, seed2027: no, seed2028: no, seed2029: no, seed2030: no
+  set_erm_tau0.1   seed2026: no
+  set_erm_tau0.3   seed2026: no
