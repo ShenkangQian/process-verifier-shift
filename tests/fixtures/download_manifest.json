@@ -1,0 +1,22 @@
+[
+  {
+    "file": "tests/fixtures/sample_phase1_train.jsonl",
+    "url": "https://media.githubusercontent.com/media/openai/prm800k/7ecc794703b2877f63226f2477a49b34f9b25163/prm800k/data/phase1_train.jsonl",
+    "revision": "7ecc794703b2877f63226f2477a49b34f9b25163",
+    "records": 2,
+    "partial_sample": true,
+    "sha256": "2b6367247bcd717886259abc9a88fa21e259cafa43ae2f4ccbb55cdfd779ea5f",
+    "upstream_sample_sha256": "686458ea0eb3c38c67962acdea557ab178363de5611abe6c27bd5eeb6c45a875",
+    "transformation": "Retained question and label fields; removed annotator identifiers, timestamps, generation metadata and annotation duration."
+  },
+  {
+    "file": "tests/fixtures/sample_phase2_train.jsonl",
+    "url": "https://media.githubusercontent.com/media/openai/prm800k/7ecc794703b2877f63226f2477a49b34f9b25163/prm800k/data/phase2_train.jsonl",
+    "revision": "7ecc794703b2877f63226f2477a49b34f9b25163",
+    "records": 2,
+    "partial_sample": true,
+    "sha256": "7d2065b98124c64bc9ad736977aeea2f9b38a97267215119ecff67be614e95f1",
+    "upstream_sample_sha256": "2b7d3c1a9299bc68f3b245d1614ae9b1e8a5dd24035902076683b4499152e3c6",
+    "transformation": "Retained question and label fields; removed annotator identifiers, timestamps, generation metadata and annotation duration."
+  }
+]
