@@ -8,6 +8,8 @@ The included study uses synthetic arithmetic and a small causal transformer. A s
 
 ![Conditional selection failure by generator and pool size](results/cue-study/figures/fig_a_conditional_failure_by_generator_and_n.png)
 
+Each panel fixes the candidate-pool size. The reversed-cue generator is the rightmost group in each panel. [Open the full-size figure](results/cue-study/figures/fig_a_conditional_failure_by_generator_and_n.png) or inspect the [complete figure guide](docs/experiments.md#reading-the-outputs).
+
 ## From step labels to a selection objective
 
 Process labels and final-answer labels answer different questions. A trajectory can make an early error and repair it, or contain a locally correct calculation that propagates an earlier mistake. Copying final correctness onto every step would erase that distinction. The data pipeline keeps the two supervision sources separate.
